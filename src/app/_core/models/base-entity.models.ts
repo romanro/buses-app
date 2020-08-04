@@ -5,6 +5,10 @@ export class BaseEntity implements IEntity {
     this.id = id;
   }
 
+  toString(entityName: string, entityMembers: string = ''): void {
+    console.log(`${entityName} with id: ${this.id}, contains: ${entityMembers}`);
+  }
+
 }
 
 interface IEntity {
