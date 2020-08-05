@@ -3,11 +3,12 @@ import { Bus } from './bus.models';
 export class Event implements IEvent {
   time: string;
   action: EnumActions;
-  bus: Bus = null;
+  bus: Bus;
 
-  constructor(time: string, action: EnumActions) {
+  constructor(time: string, action: EnumActions, bus: Bus) {
     this.time = time;
     this.action = action;
+    this.bus = bus;
   }
 
   message(): void { }
@@ -21,6 +22,6 @@ interface IEvent {
   bus: Bus;
 }
 
-enum EnumActions {
-
+export enum EnumActions {
+  goToNextStop = 'Go to Next Stop'
 }

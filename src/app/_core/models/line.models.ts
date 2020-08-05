@@ -4,7 +4,7 @@ import { Stop } from './stop.models';
 
 export class Line extends BaseEntity implements ILine {
   name: string;
-  stops: Stop[];
+  stops: Stop[] = [];
   buses: Bus[] = [];
   onSim: boolean;
   interval: number;
@@ -21,7 +21,13 @@ export class Line extends BaseEntity implements ILine {
     super.toString('Line', 'Buses, Stops');
   }
 
-  reset(): void { }
+  reset(): void {
+    this.name = undefined;
+    this.stops = [];
+    this.buses = [];
+    this.onSim = undefined;
+    this.interval = undefined;
+  }
 
 }
 

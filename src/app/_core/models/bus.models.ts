@@ -5,20 +5,30 @@ import { Stop } from './stop.models';
 
 export class Bus extends BaseEntity implements IBus {
   maxCapacity: number;
-  passengers: Person[];
+  passengers: Person[] = [];
   currentLine: Line;
   currentStop: Stop;
   currentStopIndex: number;
 
-  constructor(id: number) {
+  constructor(id: number, maxCapacity: number, currentLine: Line, currentStop: Stop, currentStopIndex: number) {
     super(id);
+    this.maxCapacity = maxCapacity;
+    this.currentLine = currentLine;
+    this.currentStop = currentStop;
+    this.currentStopIndex = currentStopIndex;
   }
 
   toString(): void {
     super.toString('Bus', 'Persons, Line, Stop');
   }
 
-  reset(): void { }
+  reset(): void {
+    this.maxCapacity = undefined;
+    this.passengers = [];
+    this.currentLine = undefined;
+    this.currentStop = undefined;
+    this.currentStopIndex = undefined;
+  }
 
   changeColor(): void { }
 
@@ -26,7 +36,7 @@ export class Bus extends BaseEntity implements IBus {
 
   getPassengersGetOn(): void { }
 
-  addPeople(): void { }
+  addPeople(): void { console.log(`Adding people to bus ${this.id}`); }
 
   removePeople(): void { }
 
